@@ -27,9 +27,18 @@ class Array
     arr
   end
 
-  def shell_sort(dec_seq)
-    dec_seq.each do |h|
+  def bubble_sort!
+    (0...(size-1)).each do |i|
+      ((i+1)...size).each do |j|
+        self[i] , self[j] = self[j], self[i] if self[i] > self[j]
+      end
     end
+    self
+  end
+
+  def bubble_sort
+    arr = self.dup
+    arr.bubble_sort!
   end
 
   def merge_sort
