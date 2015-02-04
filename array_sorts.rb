@@ -32,6 +32,35 @@ class Array
     end
   end
 
+  def merge_sort
+    return self if self.size <= 1
+
+    midpoint = self.size / 2
+    left = self[0...midpoint].merge_sort
+    right = self[midpoint..-1].merge_sort
+
+    Array.merge(left,right)
+  end
+
+  private
+
+  def self.merge(arr1,arr2)
+    container = []
+
+    until arr1.empty? || arr2.empty?
+      if arr1[0] <= arr2[0]
+        container << arr1.shift
+      else
+        container << arr2.shift
+      end
+    end
+
+    container + arr1 + arr2
+  end
+
+
+
+
 
 
 end
